@@ -1,0 +1,60 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: #222;
+	color: white;
+	font-family: sans-serif;
+}
+
+.myflex {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;	
+}
+
+.grideasy {	
+	width: 800px;
+}
+
+.gridmedium {	
+	width: 720px;
+}
+
+.gridhard {
+	width: 560px;
+}
+
+.square {
+	width: 80px;
+	height: 80px;
+	border: solid 1px cyan;
+}
+
+.evidenziata {
+	background: cyan;
+}
+
+.bomba {
+    background-color: crimson;
+}
+
+button {
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+select {
+    margin-top: 3rem;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
