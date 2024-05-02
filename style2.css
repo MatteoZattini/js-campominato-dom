@@ -28,25 +28,18 @@ body {
 	width: 560px;
 }
 
+.square {
+	width: 80px;
+	height: 80px;
+	border: solid 1px cyan;
+}
 
+.evidenziata {
+	background-color: cyan;
+}
 
 .bomba {
     background-color: crimson;
-}
-
-.square {
-    width: 80px;
-    height: 80px;
-    border: solid 1px cyan;
-    background: transparent;
-}
-
-.evidenziata.bomba.square {
-    background: crimson;
-}
-
-.evidenziata.square {
-    background-color: cyan;
 }
 
 button {

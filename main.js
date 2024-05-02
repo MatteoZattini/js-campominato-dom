@@ -2,6 +2,7 @@ let myButton = document.getElementById("bottone")
 let select = document.querySelector("select")
 let griglia = document.querySelector(".myflex")
 let bombs = []
+let punteggio = 0
 
 myButton.addEventListener("click", function(){
 
@@ -28,8 +29,24 @@ myButton.addEventListener("click", function(){
     }
 
     griglia.classList.add(gridDifficulty)
-
+    console.log(gridBombe)
     mySquare(gridSize, gridBombe, griglia)
+    let squares = document.querySelectorAll(".square")
+    squares.forEach(square => {
+        square.addEventListener("click", function(){
+            if (!square.classList.contains("bomba")){
+                punteggio++
+            } else (alert("hai perso"))
+        // if ( square.classList.contains("evidenziata") ) {
+        //     square.innerHTML = "";
+        // } else {
+        //     square.innerText = nCaselle;
+        // }       
+            square.classList.toggle("evidenziata")
+        })      
+    });
+
+
     // for (let i = 1; i <= gridSize; i++) {
     //     let quadrato = mySquare(i);
     //     griglia.append(quadrato);
@@ -61,27 +78,30 @@ function mySquare (nCaselle, arrayBombe, griglia ) {
     
     for (let i = 1; i <= nCaselle; i++) {
         let square = document.createElement("div");
-        square.classList.add("square");
         // let quadrato = mySquare(i);
         // griglia.append(quadrato);
         if (arrayBombe.includes(i)) {
             square.classList.add("bomba")
-        } else {
-            square.classList.add("evidenziata")
         } 
+        square.classList.add("square");
+        // else {
+            //     square.classList.add("evidenziata")
+            // } 
         griglia.append(square)   
     }
         
 }
 
-square.addEventListener("click", function(){
-if ( square.classList.contains("evidenziata") ) {
-    square.innerHTML = "";
-} else {
-    square.innerText = nCaselle;
-}       
-    square.classList.toggle("evidenziata")
-})
+// let square = document.querySelectorAll(".square")
+// console.log(square)
+// square.addEventListener("click", function(){
+// if ( square.classList.contains("evidenziata") ) {
+//     square.innerHTML = "";
+// } else {
+//     square.innerText = nCaselle;
+// }       
+//     square.classList.toggle("evidenziata")
+// })
 
 
 
