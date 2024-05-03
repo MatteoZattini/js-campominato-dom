@@ -87,7 +87,7 @@ function mySquare (nCaselle, arrayBombe, griglia ) {
         // else {
             //     square.classList.add("evidenziata")
             // } 
-        griglia.append(square)   
+        griglia.append(square)
     }
         
 }

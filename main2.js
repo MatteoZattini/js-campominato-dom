@@ -12,6 +12,8 @@ myButton.addEventListener("click", function(){
     let gridSize;
     let gridDifficulty;
     let gridBombe;
+    punteggio = 0
+    arrayBombe = []
 
     if (select.value == "easy") {
 
@@ -22,68 +24,87 @@ myButton.addEventListener("click", function(){
     } else if (select.value == "medium") {
         gridSize = 81;
         gridDifficulty = "gridmedium"
+        gridBombe = myBomb(gridSize)
 
     } else if (select.value == "hard") {
         gridSize = 49;
         gridDifficulty = "gridhard"
+        gridBombe = myBomb(gridSize)
     }
 
     griglia.classList.add(gridDifficulty)
 
-    for (let i = 1; i <= gridSize; i++) {
-        let quadrato = mySquare(i);
-        griglia.append(quadrato);   
-    }
+    mySquare(gridSize, gridBombe, griglia)
+
 })
 
 
-// function myBomb (contenuto){
-    
-//     while ( arrayBombe.length <= 15) {
-//         let bomb = Math.floor(Math.random() * contenuto) + 1;
+function myBomb (nCaselle){  
 
-//         if (!arrayBombe.includes(bomb)){
-//             arrayBombe.push(bomb)
-//         }
+    while ( arrayBombe.length <= 15) {
+        let bomb = Math.floor(Math.random() * nCaselle) + 1;
         
-//     }
-    
-//     return arrayBombe
-
-// }
-
-function myBomb (){
-if(select.value == "easy"){
-    for (let x = 1; i <= 16; x++) {
-        let bomb = Math.floor(Math.random() * (100 - 1) + 1);
-    
-        if(!arrayBombe.includes(bomb)){
+        if (!arrayBombe.includes(bomb)){
             arrayBombe.push(bomb)
         }
         
     }
+    
+    return arrayBombe
+    
 }
 
-}
 
-function mySquare (contenuto) {
-    let square = document.createElement("div");
-    square.classList.add("square");
+function mySquare (nCaselle, nBombe, griglia) {
+    
+    for (let i = 1; i <= nCaselle; i++){
+        let square = document.createElement("div");
+        square.classList.add("square");
 
-    square.addEventListener("click", function(){
+        square.addEventListener("click", function(){
+            if (nBombe.includes(i)) {
+                square.classList.add("bomba")
+            } else {
+                square.classList.add("evidenziata")
+                punteggio++
+            }
 
-    if ( square.classList.contains("evidenziata") ) {
-        square.innerHTML = "";
-    } else {
-        square.innerText = contenuto;
-    }
+            if (square.classList.contains("bomba")){
+                alert("hai perso " + punteggio)
+            } else if (punteggio == (nCaselle - 16)){
+                alert("hai vinto " + punteggio)
+            }
+        })
+      
+        griglia.append(square)
         
-        square.classList.toggle("evidenziata")
-
-    })
-
-    return square;
+    }
+    
+    
 }
 
 
 
+// VECCHIA CREAZIONE QUADRATO. ERA DENTRO EVENLISTENER MYBUTTON
+// for (let i = 1; i <= gridSize; i++) {
+//     let quadrato = mySquare(i);
+//     griglia.append(quadrato);   
+// }
+
+// CODICE DEL VECCHIO MY SQUARE
+// square.addEventListener("click", function(){
+    // if (arrayBombe.includes(square)){
+        //     myBomb.classList.add("bomba") ????
+        // }
+        
+        // square.classList.toggle("evidenziata")
+        // })
+        
+        
+        // QUESTO PEZZO DI CODICE è PER FAR SCOMPARIRE ANCHE IL NUMERO AL CLICK
+        // if ( square.classList.contains("evidenziata") ) {
+            //     square.innerHTML = "";
+            // } else {
+                //     square.innerText = contenuto;
+                // }
+                
